@@ -1,17 +1,27 @@
-cmake_minimum_required(VERSION 3.14)
-project(sample_cpp_project)
+#cmake_minimum_required(VERSION 3.14)
+#project(sample_cpp_project)
+#
+#add_executable(main src/main.cpp src/my_add.cpp)
+#
+#include(FetchContent)
+#FetchContent_Declare(
+#    googletest
+#    GIT_REPOSITORY https://github.com/google/googletest.git
+#    GIT_TAG v1.15.2
+#)
+#FetchContent_MakeAvailable(googletest)
+#
+#
+#enable_testing()
+#add_executable(tests tests/test_add.cpp src/my_add.cpp)
+#target_include_directories(test  )
+#target_link_libraries(tests gtest_main)
 
-add_executable(main main.cpp my_add.cpp)
 
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG v1.15.2
-)
-FetchContent_MakeAvailable(googletest)
+cmake_minimum_required( VERSION 3.20 )
+project( MyVega )
 
+SET( PATH_MODULES ${CMAKE_SOURCE_DIR}/modules )
 
-enable_testing()
-add_executable(tests test_add.cpp my_add.cpp)
-target_link_libraries(tests gtest_main)
+add_subdirectory( exe )
+add_subdirectory( modules )
