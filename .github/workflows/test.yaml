@@ -11,8 +11,8 @@ jobs:
         with:
           name: binaries
           path: |
-            build/main
-            build/tests
+            build/exe/calc/calc
+            build/modules/*/test_?
 
   tests:
     needs: [build]
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: binaries
-      - run: chmod +x tests && ./tests
+      - run: ctest
 
   run:
     needs: [build]
