@@ -16,10 +16,8 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: binaries
-      - run: ctest
+      - name: CTest Action
+        uses: threeal/ctest-action@v1.1.0
 
   run:
     needs: [build]
