@@ -1,12 +1,13 @@
-name: basic
-on: [push]
+name: Test
+on:
+  push:
 jobs:
-  build:
-    name: MyVegaProject
+  test-project:
+    name: Test Project
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
 
       - name: Configure and Build Project
         uses: threeal/cmake-action@v1.3.0
@@ -15,12 +16,3 @@ jobs:
 
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
-
-  run:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: binaries
-      - run: chmod +x main && ./main 2 7
