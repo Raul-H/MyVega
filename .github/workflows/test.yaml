@@ -3,7 +3,7 @@ on:
   push:
 jobs:
   build:
-    name: Build, run unit tests and deploy
+    name: Build, Unit test, Upload
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,6 +24,7 @@ jobs:
           path: build/exe/calc/calc
 
   runs:
+    name: Upload and Run
     needs: [build]
     runs-on: ubuntu-latest
     steps:
