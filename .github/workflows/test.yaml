@@ -4,25 +4,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout 
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y cmake
-      - run: mkdir build && cmake -B build -S . && cmake --build build
+
+      - name: Configure and Build Project
+        uses: threeal/cmake-action@v1.3.0
+        with:
+          run-build: true
+
+      - name: Test Project
+        uses: threeal/ctest-action@v1.1.0
+
       - uses: actions/upload-artifact@v4
         with:
           name: binaries
           path: build/
-
-  tests:
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: binaries
-      - name: CTest Action
-        uses: threeal/ctest-action@v1.1.0
-        with:
-          test-dir: binaries
 
   run:
     needs: [build]
