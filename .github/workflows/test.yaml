@@ -3,7 +3,7 @@ on:
   push:
 jobs:
   test-project:
-    name: Test Project
+    name: Build, run unit tests and deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,3 +16,9 @@ jobs:
 
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
+      
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: build/exe/calc/calc
