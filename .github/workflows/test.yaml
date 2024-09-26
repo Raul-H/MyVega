@@ -15,6 +15,7 @@ jobs:
       - name: Test Project
         uses: threeal/ctest-action@v1.1.0
 
+      - name: Upload
       - uses: actions/upload-artifact@v4
         with:
           name: binaries
