@@ -24,7 +24,7 @@ jobs:
           path: build/exe/calc/calc
 
   runs:
-    name: Upload and Run
+    name: Download, Run
     needs: [build]
     runs-on: ubuntu-latest
     steps:
