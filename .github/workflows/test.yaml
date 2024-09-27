@@ -1,6 +1,10 @@
 name: Test
 on:
   push:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   build:
     name: Build, Unit test, Upload
@@ -22,6 +26,15 @@ jobs:
         with:
           name: binaries
           path: build/exe/calc/calc
+
+      - name: Install Doxygen
+        run: sudo apt install doxygen && doxygen --version
+
+      - name: Install Graphviz
+        run: sudo apt install graphviz
+
+      - name: Create documentation     
+        run:  cd doc && doxygen
 
   runs:
     name: Download, Run
