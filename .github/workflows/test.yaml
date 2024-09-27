@@ -35,6 +35,15 @@ jobs:
 
       - name: Create documentation     
         run:  cd doc && doxygen
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          # Upload entire repository
+          path: build/doc/html/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   runs:
     name: Download, Run
