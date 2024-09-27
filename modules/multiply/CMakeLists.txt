@@ -12,3 +12,7 @@ target_link_libraries( test_Multiplication PRIVATE
 )
 
 add_test( test_Multiplication test_Multiplication )
+
+add_executable( bench_Multiplication ${CMAKE_CURRENT_SOURCE_DIR}/bench/b_Multiplication.cpp )
+target_include_directories( bench_Multiplication  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include )
+target_link_libraries( bench_Multiplication  PRIVATE benchmark::benchmark_main multiply )

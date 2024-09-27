@@ -1,4 +1,4 @@
-#include "MyVega/add/Addition.hpp"
+#include "MyVega/add.hpp"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
