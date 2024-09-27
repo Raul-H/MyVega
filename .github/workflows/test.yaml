@@ -27,24 +27,6 @@ jobs:
           name: binaries
           path: build/exe/calc/calc
 
-      - name: Install Doxygen
-        run: sudo apt install doxygen && doxygen --version
-
-      - name: Install Graphviz
-        run: sudo apt install graphviz
-
-      - name: Create documentation     
-        run:  cd doc && doxygen
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: build/doc/html/
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
   runs:
     name: Download, Run
     needs: [build]
