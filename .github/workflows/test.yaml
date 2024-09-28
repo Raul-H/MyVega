@@ -2,6 +2,7 @@ name: Test
 on:
   push:
 permissions:
+  deployments: write
   contents: read
   pages: write
   id-token: write
@@ -49,7 +50,11 @@ jobs:
           external-data-json-path: ./cache/benchmark-data.json
           # Workflow will fail when an alert happens
           fail-on-alert: true
-        # Upload the updated cache file for the next job by actions/cache
+          # Upload the updated cache file for the next job by actions/cache
+          # Access token to deploy GitHub Pages branch
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Push and deploy GitHub pages branch automatically
+          auto-push: true
 
   runs:
     name: Download, Run
